@@ -20,7 +20,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 add_executable(hello source/basics/hello.c)
 set_target_properties(hello PROPERTIES FOLDER basics)
 
-add_executable(eratostenes source/basics/eratostenes.c)
+add_executable(eratostenes source/basics/eratostenes.c source/exercises/zadanie0812_2.c)
 set_target_properties(eratostenes PROPERTIES FOLDER basics)
 
 add_executable(files source/basics/files.c)
@@ -28,6 +28,26 @@ set_target_properties(files PROPERTIES FOLDER basics)
 
 add_executable(horner source/basics/horner.c)
 set_target_properties(horner PROPERTIES FOLDER basics)
+
+add_executable(polish_notation source/basics/polish_notation.c)
+set_target_properties(polish_notation PROPERTIES FOLDER basics)
+
+
+### EXERCISES
+add_executable(zadanie0812_2 source/exercises/zadanie0812_2.c)
+set_target_properties(zadanie0812_2 PROPERTIES FOLDER exercises)
+
+add_executable(zadanie0812_3 source/exercises/zadanie0812_3.c)
+set_target_properties(zadanie0812_3 PROPERTIES FOLDER exercises)
+
+add_executable(zadanie1512_1 source/exercises/zadanie1512_1.c)
+set_target_properties(zadanie1512_1 PROPERTIES FOLDER exercises)
+
+add_executable(zadanie1512_3 source/exercises/zadanie1512_3.c)
+set_target_properties(zadanie1512_3 PROPERTIES FOLDER exercises)
+
+add_executable(zadanie1512_2 source/exercises/zadanie1512_2.c)
+set_target_properties(zadanie1512_2 PROPERTIES FOLDER exercises)
 
 
 ### SORTING
