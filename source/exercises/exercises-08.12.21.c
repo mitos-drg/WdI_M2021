@@ -27,6 +27,29 @@ void count_array(int n, int m, int A[n], int B[m])
         B[i] += B[i-1];
 }
 
+int policz(int n1, int A[n1], int n2, int B[n2], int n3, int C[n3])
+{
+    int a = 0, b = 0, c = 0;
+    int licznik = 0;
+    while (a < n1 && b < n2 && c < n3)
+    {
+        if (A[a] > B[b])
+            b++;
+        else if (B[b] > C[c])
+            c++;
+        else if (C[c] > A[a])
+            a++;
+        else
+        {
+            licznik++;
+            a++;
+            b++;
+            c++;
+        }
+    }
+    return licznik;
+}
+
 int main()
 {
     int n, m;

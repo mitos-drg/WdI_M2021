@@ -1,5 +1,48 @@
 #include <stdio.h>
 
+void sum(int n, int A[n], int k)
+{
+    int i = 0, j = n-1;
+    while (i != j)
+    {
+        if (A[i]+A[j] > k)
+            j--;
+        else if (A[i]+A[j] < k)
+            i++;
+        else
+        {
+            printf("%d = %d+%d\n", k, A[i], A[j]);
+            i = j;
+        }
+    }
+}
+
+void przenies(int co, int skad, int dokad)
+{
+    printf("Przenies krazek %d z wiezy %d na wieze %d\n", co, skad, dokad);
+}
+
+void hanoi(int m, int skad, int dokad)
+{
+    if (m > 0)
+    {
+        if (skad == 0 && dokad == 1)
+        {
+            hanoi(m-1, skad, dokad);
+            przenies(m, skad, 3-skad-dokad);
+            hanoi(m-1, dokad, skad);
+            przenies(m, 3-skad-dokad, dokad);
+            hanoi(m-1, skad, dokad);
+        }
+        else
+        {
+            hanoi(m-1, skad, 3-skad-dokad);
+            przenies(m, skad, dokad);
+            hanoi(m-1, 3-skad-dokad, dokad);
+        }
+    }
+}
+
 void divide(int n, int A[n], int* p, int* d)
 {
     int ones = 0;
@@ -71,13 +114,13 @@ void divide(int n, int A[n], int* p, int* d)
 
 int main()
 {
-    int n;
-    scanf("%d", &n);
+    int n, k;
+    scanf("%d %d", &n, &k);
     int A[n];
     for (int i = 0; i < n; ++i)
         scanf("%d", &A[i]);
-    int p = 0, d = 0;
-    divide(n, A, &p, &d);
-    printf("Podzial tablicy: 0 < %d < %d < n\n", p, d);
+
+    sum(n, A, k);
+
     return 0;
 }
