@@ -70,6 +70,58 @@ void reverse_ls(i_list_s* list)
     }
 }
 
+i_list_s merge_ls(i_list_s lhs, i_list_s rhs, i_operator_c comp)
+{
+    // Create new list and temporary node pointer
+    i_list_s result = NULL;
+    i_node_s* tmp = NULL;
+
+    // While both list aren't empty
+    while (lhs != NULL && rhs != NULL)
+    {
+        // Store current first item
+        tmp = result;
+        // Compare elements from both list and add whichever win the comparison, then move appropriate list pointer
+        if (comp(lhs->data, rhs->data))
+        {
+            result = lhs;
+            lhs = lhs->next;
+        }
+        else
+        {
+            result = rhs;
+            rhs = rhs->next;
+        }
+
+        // Add new element to result list
+        result->next = tmp;
+    }
+
+    // Append remaining elements from left list
+    while (lhs != NULL)
+    {
+        tmp = result;
+        result = lhs;
+        lhs = lhs->next;
+        result->next = tmp;
+    }
+
+    // Append remaining elements from right list
+    while (rhs != NULL)
+    {
+        tmp = result;
+        result = rhs;
+        rhs = rhs->next;
+        result->next = tmp;
+    }
+
+    // After the merge list is in reversed order, so reverse it again
+    reverse_ls(&result);
+
+    // Return resulting list
+    return result;
+}
+
 int is_ordered_ls(i_list_s list)
 {
     // Check if list is not empty
