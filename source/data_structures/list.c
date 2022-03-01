@@ -48,6 +48,27 @@ int pop_front_ls(i_list_s* list)
     return value;
 }
 
+void reverse_ls(i_list_s* list)
+{
+    // If list contains only one element return, as it is reversed (kind of)
+    if ((*list)->next == NULL)
+        return;
+
+    // Create node pointers to store previous element, current one and the next one and initialize their values
+    // respectfully to: first element, second one and to nothing (NULL)
+    i_node_s* previous = *list;
+    i_node_s* iter = previous->next;
+    i_node_s* next = NULL;
+
+    // Iterate through list and reverse it in every point
+    while (iter->next != NULL)
+    {
+        next = iter->next;
+        iter->next = previous;
+        iter = next;
+    }
+}
+
 int is_ordered_ls(i_list_s list)
 {
     // Check if list is not empty
