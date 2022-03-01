@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <i_node.h>
 #include <list.h>
+#include <function.h>
 
 void push_back_ls(i_list_s list, int value)
 {
@@ -85,4 +86,32 @@ int is_ordered_ls(i_list_s list)
 
     // List is ordered, return true
     return 1;
+}
+
+void foreach_ls_const(i_list_s list, i_method_c operation)
+{
+    // Get list iterator, could use list just as well, but for sake of future possible expansions to the list we do
+    // it that way
+    i_node_s* iter = list;
+
+    // Iterate through list and execute the operation on every element
+    while (iter != NULL)
+    {
+        operation(iter->data);
+        iter = iter->next;
+    }
+}
+
+void foreach_ls(i_list_s list, i_method operation)
+{
+    // Get list iterator, could use list just as well, but for sake of future possible expansions to the list we do
+    // it that way
+    i_node_s* iter = list;
+
+    // Iterate through list and execute the operation on every element
+    while (iter != NULL)
+    {
+        operation(&iter->data);
+        iter = iter->next;
+    }
 }
