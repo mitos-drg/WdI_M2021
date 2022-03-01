@@ -15,8 +15,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_SOURCE_DIR}/bin)
 
-### Include cstd library to be used in other submodules
-# add_subdirectory(source/cstd)
+### Include libraries submodules, probably should done that differently, but don't know how yet
+add_subdirectory(source/data_structures)
 
 ### Include subprojects
 add_subdirectory(source/basics)
