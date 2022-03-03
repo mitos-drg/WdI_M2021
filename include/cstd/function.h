@@ -14,20 +14,20 @@ typedef void (*i_method_c)(int);
 // Standard operator functions
 int i_grater(int lhs, int rhs)
 {
-    return lhs > rhs ? lhs : rhs;
+    return lhs > rhs;
 }
 int i_gratereq(int lhs, int rhs)
 {
-    return lhs >= rhs ? lhs : rhs;
+    return lhs >= rhs;
 }
 
 int i_less(int lhs, int rhs)
 {
-    return lhs < rhs ? lhs : rhs;
+    return lhs < rhs;
 }
 int i_lesseq(int lhs, int rhs)
 {
-    return lhs <= rhs ? lhs : rhs;
+    return lhs <= rhs;
 }
 
 #endif //WDI_MIM2021_FUNCTION_H
