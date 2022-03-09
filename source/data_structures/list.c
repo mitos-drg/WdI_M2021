@@ -56,22 +56,31 @@ void reverse_ls(i_list_s* list)
         return;
 
     // Create node pointers to store previous element, current one and the next one and initialize their values
-    // respectfully to: first element, second one and to nothing (NULL)
-    i_node_s* previous = *list;
-    i_node_s* iter = previous->next;
+    i_node_s* previous = NULL;
+    i_node_s* iter = *list;
     i_node_s* next = NULL;
 
     // Iterate through list and reverse it in every point
-    while (iter->next != NULL)
+    while (iter != NULL)
     {
         next = iter->next;
         iter->next = previous;
+        previous = iter;
         iter = next;
     }
+    
+    // Update list to point to new first element
+    *list = previous;
 }
 
 i_list_s merge_ls(i_list_s lhs, i_list_s rhs, i_operator_c comp)
 {
+    // Handle edge case: attempting empty list merge
+    if (lhs == NULL)
+        return rhs;
+    if (rhs == NULL)
+        return lhs;
+
     // Create new list and temporary node pointer
     i_list_s result = NULL;
     i_node_s* tmp = NULL;
@@ -97,26 +106,17 @@ i_list_s merge_ls(i_list_s lhs, i_list_s rhs, i_operator_c comp)
         result->next = tmp;
     }
 
-    // Append remaining elements from left list
-    while (lhs != NULL)
-    {
-        tmp = result;
-        result = lhs;
-        lhs = lhs->next;
-        result->next = tmp;
-    }
-
-    // Append remaining elements from right list
-    while (rhs != NULL)
-    {
-        tmp = result;
-        result = rhs;
-        rhs = rhs->next;
-        result->next = tmp;
-    }
+    // Save first element of merged part
+    tmp = result;
 
     // After the merge list is in reversed order, so reverse it again
     reverse_ls(&result);
+
+    // Append to the end of new list what remained
+    if (lhs == NULL)
+        tmp->next = rhs;
+    if (rhs == NULL)
+        tmp->next = lhs;
 
     // Return resulting list
     return result;

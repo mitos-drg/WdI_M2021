@@ -6,6 +6,7 @@
 #define WDI_MIM2021_LIST_H
 
 #include "i_node.h"
+#include "function.h"
 
 typedef i_node_s* i_list_s;
 
@@ -15,6 +16,10 @@ extern void push_front_ls(i_list_s* list, int value);
 
 extern int pop_front_ls(i_list_s* list);
 
+extern void reverse_ls(i_list_s* list);
+
 extern int is_ordered_ls(i_list_s list);
+
+extern void foreach_ls_const(i_list_s list, i_method_c operation);
 
 #endif //WDI_MIM2021_LIST_H
