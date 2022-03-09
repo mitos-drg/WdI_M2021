@@ -11,7 +11,15 @@ typedef int (*i_operator_c)(int, int);
 typedef void (*i_method)(int*);
 typedef void (*i_method_c)(int);
 
-// Standard operator functions
+// Standard comparison functions
+int i_grater(int lhs, int rhs);
+int i_gratereq(int lhs, int rhs);
+
+int i_less(int lhs, int rhs);
+int i_lesseq(int lhs, int rhs);
+
+#ifdef CSTD_IMPLEMENTATION
+
 int i_grater(int lhs, int rhs)
 {
     return lhs > rhs;
@@ -29,5 +37,7 @@ int i_lesseq(int lhs, int rhs)
 {
     return lhs <= rhs;
 }
+
+#endif
 
 #endif //WDI_MIM2021_FUNCTION_H
