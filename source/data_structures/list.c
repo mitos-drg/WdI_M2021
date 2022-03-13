@@ -167,3 +167,47 @@ void foreach_ls(i_list_s list, i_method operation)
         iter = iter->next;
     }
 }
+
+i_node_s* merging_ls(i_list_s lhs, i_list_s rhs)
+{
+    // Calculate lengths of both lists
+    int ll = length_ls(lhs);
+    int rl = length_ls(rhs);
+
+    // Move pointer of longer list difference times
+    if (ll > rl)
+    {
+        for (int i = 0; i < ll - rl; ++i)
+            lhs = lhs->next;
+    } else
+    {
+        for (int i = 0; i < rl - ll; ++i)
+            rhs = rhs->next;
+    }
+
+    // Find merging point
+    while (lhs != NULL)
+    {
+        if (lhs == rhs)
+            return lhs;
+        lhs = lhs->next;
+        rhs = rhs->next;
+    }
+
+    // No merging point, return NULL
+    return NULL;
+}
+
+int length_ls(i_list_s list)
+{
+    // Compute length of the list
+    int length = 0;
+    while (list != NULL)
+    {
+        list = list->next;
+        length++;
+    }
+
+    // Return length
+    return length;
+}
