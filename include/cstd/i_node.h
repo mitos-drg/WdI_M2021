@@ -11,4 +11,10 @@ typedef struct i_node_s
     struct i_node_s* next;
 } i_node_s;
 
+typedef struct i_node_t
+{
+    int key;
+    struct i_node_t* up, *right, *left;
+} i_node_t;
+
 #endif //WDI_MIM2021_I_NODE_H

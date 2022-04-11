@@ -5,6 +5,7 @@
 /.idea/
 /bin/
 /lib/
+/build/
 
 ### C++ template
 # Compiled Object files
