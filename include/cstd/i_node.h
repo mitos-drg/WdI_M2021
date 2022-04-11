@@ -17,4 +17,16 @@ typedef struct i_node_t
     struct i_node_t* up, *right, *left;
 } i_node_t;
 
+enum COLOR
+{
+    RED, BLACK
+};
+
+typedef struct i_node_c
+{
+    int key;
+    enum COLOR color;
+    struct i_node_c* up, *right, *left;
+} i_node_c;
+
 #endif //WDI_MIM2021_I_NODE_H

@@ -7,6 +7,10 @@
 #include <function.h>
 #include <tree.h>
 
+/**
+ * BINARY SEARCH TREES
+ */
+
 void add_node_bst(i_tree_b* root, i_node_t* node)
 {
     // If tree is empty set root to be new node end exit
@@ -203,4 +207,35 @@ int height_bst(i_tree_b root)
         return lh + 1;
     else
         return rh + 1;
+}
+
+
+/**
+ * RED-BLACK TREES
+ */
+
+void rotate_left(i_tree_rb* tree, i_node_c* x)
+{ // TODO: Finish
+    // Get second node taking part in rotation
+    i_node_c* y = x->right;
+
+    // Left subtree of right child  
+    x->right = y->left;
+    x->right->up = x;
+    y->up = x->up;
+}
+
+void add_rb(i_tree_rb* tree, int value)
+{
+
+}
+
+void remove_rb(i_tree_rb* tree, i_node_c* node)
+{
+
+}
+
+i_node_c* find_rb(i_tree_rb root, int value)
+{
+
 }
