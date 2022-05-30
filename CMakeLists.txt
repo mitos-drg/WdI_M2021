@@ -17,6 +17,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_SOURCE_DIR}/bin)
 
 ### Include libraries submodules, probably should done that differently, but don't know how yet
 add_subdirectory(source/data_structures)
+add_subdirectory(source/graphs)
 
 add_executable(test source/data_structures/test.c)
 target_link_libraries(test cstd::data)
